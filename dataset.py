@@ -41,28 +41,6 @@ class DSD100Data(Dataset):
                 data.append({"name": s,
                              "vocals": vocals,
                              "accompaniment": accompaniment})
-                ### Essentially the annotations, models evaluated based on how close they get to it
-                ### Use same evaluation criteria as the paper
-                # if transform:
-                #     data.append({"name": s,
-                #                  "bass": [transform(torchaudio.load(os.path.join(".\\DSD100\\Sources\\Test", s, "bass.wav"),
-                #                                       num_frames=308700)[0])],
-                #                  "drums": [transform(torchaudio.load(os.path.join(".\\DSD100\\Sources\\Test", s, "drums.wav"),
-                #                                        num_frames=308700)[0])],
-                #                  "other": [transform(torchaudio.load(os.path.join(".\\DSD100\\Sources\\Test", s, "other.wav"),
-                #                                        num_frames=308700)[0])],
-                #                  "vocals": [transform(torchaudio.load(os.path.join(".\\DSD100\\Sources\\Test", s, "vocals.wav"),
-                #                                         num_frames=308700)[0])]})
-                # else:
-                #     data.append({"name": s,
-                #                 "accompaniment" : [torchaudio.load(os.path.join(".\\DSD100\\Sources\\Test", s, "bass.wav"),
-                #                                         num_frames=308700)[0]],
-                #                 "drums" : [torchaudio.load(os.path.join(".\\DSD100\\Sources\\Test", s, "drums.wav"),
-                #                                         num_frames=308700)[0]],
-                #                 "other" : [torchaudio.load(os.path.join(".\\DSD100\\Sources\\Test", s, "other.wav"),
-                #                                         num_frames=308700)[0]],
-                #                 "vocals" : [torchaudio.load(os.path.join(".\\DSD100\\Sources\\Test", s, "vocals.wav"),
-                #                                         num_frames=308700)[0]]})
         else:
             data = []
             self.mix_path = ".\\DSD100\\Mixtures\\Dev"
@@ -75,30 +53,6 @@ class DSD100Data(Dataset):
                 data.append({"name": s,
                              "vocals": vocals,
                              "accompaniment": accompaniment})
-                # if transform:
-                #     data.append({"name": s,
-                #                  "bass": [
-                #                      transform(torchaudio.load(os.path.join(".\\DSD100\\Sources\\Dev", s, "bass.wav"),
-                #                                         num_frames=308700)[0])],
-                #                  "drums": [
-                #                      transform(torchaudio.load(os.path.join(".\\DSD100\\Sources\\Dev", s, "drums.wav"),
-                #                                         num_frames=308700)[0])],
-                #                  "other": [
-                #                      transform(torchaudio.load(os.path.join(".\\DSD100\\Sources\\Dev", s, "other.wav"),
-                #                                         num_frames=308700)[0])],
-                #                  "vocals": [transform(
-                #                      torchaudio.load(os.path.join(".\\DSD100\\Sources\\Dev", s, "vocals.wav"),
-                #                                         num_frames=308700)[0])]})
-                # else:
-                #     data.append({"name": s,
-                #                  "bass": [torchaudio.load(os.path.join(".\\DSD100\\Sources\\Dev", s, "bass.wav"),
-                #                                         num_frames=308700)[0]],
-                #                  "drums": [torchaudio.load(os.path.join(".\\DSD100\\Sources\\Dev", s, "drums.wav"),
-                #                                         num_frames=308700)[0]],
-                #                  "other": [torchaudio.load(os.path.join(".\\DSD100\\Sources\\Dev", s, "other.wav"),
-                #                                         num_frames=308700)[0]],
-                #                  "vocals": [torchaudio.load(os.path.join(".\\DSD100\\Sources\\Dev", s, "vocals.wav"),
-                #                                         num_frames=308700)[0]]})
         self.tracks = pd.DataFrame(data)
 
     def __len__(self):
